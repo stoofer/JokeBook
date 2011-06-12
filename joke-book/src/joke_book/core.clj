@@ -1,14 +1,12 @@
 (ns joke-book.core
   (:use compojure.core)
-  (:require [appengine-magic.core :as ae]))
+  (:require [joke-book.handlers :as h]
+            [appengine-magic.core :as ae]
+            [compojure.route :as route]))
 
-
-(defn joke-book-app-handler [request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (str
-	  "<html><body><p>What's small brown and sticky?</p>"
-	  "<p>A stick!</p></body></html>")})
-
-
-(ae/def-appengine-app joke-book-app #'joke-book-app-handler)
+(defroutes app-routes
+  (GET "/" [] (h/random-joke))
+  (GET "/joke/new" [] (h/new-joke))
+  (route/not-found (h/not-found)))
+  
+(ae/def-appengine-app joke-book-app #'app-routes)

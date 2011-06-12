@@ -4,4 +4,6 @@
 					[org.clojure/clojure "1.2.1"]
 					[compojure "0.6.2"]
 				]
-  :dev-dependencies [[appengine-magic "0.4.1"]])
+  :dev-dependencies [
+	[appengine-magic "0.4.1"]
+	[lein-eclipse "1.0.0"]])

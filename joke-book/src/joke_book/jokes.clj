@@ -4,8 +4,11 @@
 
 (def jokes (atom []))
 
+(defn- approved-jokes []
+  (vec (filter #(= :approved (:status %)) @jokes)))
+
 (defn random []
-  (rand-nth @jokes))
+  (rand-nth (approved-jokes)))
 
 (defn parse [{:keys [lines]}]
   {
@@ -27,6 +30,7 @@
 (defn line-to-joke [line]
   (-> {:lines line}
       parse
+      (assoc :status :approved)
       save))
 
 (doall (map line-to-joke canned-jokes))

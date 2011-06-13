@@ -18,6 +18,6 @@
       jokes/save
       view/joke-created
       ok))
-      
+
 (defn not-found [] 
   "<html><body><p>NOT FOUND</p></body></html>")

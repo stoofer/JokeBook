@@ -63,5 +63,5 @@
     "Thanks" 
     "Saved" 
     [:section
-     (joke)
+     [:article (map str joke)]
      [:article "Your joke has been created, we're just checking it isn't too naughty for this site"]]))

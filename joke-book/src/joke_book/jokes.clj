@@ -15,7 +15,9 @@
   })
 
 (defn save [joke]
-  (swap! jokes conj joke))
+  (do 
+    (swap! jokes conj joke)
+    joke))
 
 ;TODO - move this out
 ;Test data only

@@ -1,15 +1,23 @@
 (ns joke-book.handlers
-  (require [joke-book.view :as view]))
+  (require [joke-book.view :as view]
+           [joke-book.jokes :as jokes]))
 
-(defn ok[body]
+(defn ok [body]
   {:status 200 :headers {"Content-Type" "text/html"} :body body})
 
-(defn random-joke [](ok (view/joke-page view/stub-joke)))
+(defn random-joke []
+  (-> (jokes/random)
+      view/joke-page
+      ok))
 	  
-(defn new-joke [](ok (view/new-joke-page)))
+(defn new-joke [] (ok (view/new-joke-page)))
 
-(defn add-joke [request]
-  (ok "<p>TODO</p>"))
-
+(defn add-joke [{:keys [params]}]
+  (-> params
+      jokes/parse
+      jokes/save
+      view/joke-created
+      ok))
+      
 (defn not-found [] 
   "<html><body><p>NOT FOUND</p></body></html>")

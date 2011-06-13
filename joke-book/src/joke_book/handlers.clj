@@ -4,12 +4,17 @@
 (defn random-joke []
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body (view/page "Random Joke" "I say, I say, I say" (view/joke-article view/stub-joke))})
+   :body (view/joke-page view/stub-joke) })
 	  
 (defn new-joke []
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body (str
-	  "<html><body><p>TODO</p></body></html>")})
+   :body (view/new-joke-page)})
 
-(defn not-found [] "<html><body><p>NOT FOUND</p></body></html>")
+(defn add-joke [request]
+  {:status 200
+   :headers {"Content-Type" "text/html"}
+   :body "<p>TODO</p>"})
+
+(defn not-found [] 
+  "<html><body><p>NOT FOUND</p></body></html>")

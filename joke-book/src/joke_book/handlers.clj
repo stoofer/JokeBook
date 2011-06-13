@@ -1,13 +1,11 @@
-(ns joke-book.handlers)
+(ns joke-book.handlers
+  (require [joke-book.view :as view]))
 
 (defn random-joke []
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body (str
-	  "<html><body><p>What's small brown and sticky?</p>"
-	  "<p>A stick!</p></body></html>")})
-
-
+   :body (view/page "Random Joke" "I say, I say, I say" (view/joke-article view/stub-joke))})
+	  
 (defn new-joke []
   {:status 200
    :headers {"Content-Type" "text/html"}

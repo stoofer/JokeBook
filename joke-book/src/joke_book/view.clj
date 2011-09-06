@@ -37,8 +37,6 @@
 (defn- joke-article[{:keys [lines]}]
   [:article (map #(vector :p %) lines)])
 
-
-
 (defn- joke-form []
    (form-to [:post "/joke/new"] 
      (label :lines "Joke") 
@@ -50,7 +48,6 @@
     "Random Joke" 
     "I say, I say, I say" 
     (joke-article joke)))
-
 
 (defn new-joke-page []
   (master-page

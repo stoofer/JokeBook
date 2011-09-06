@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-  <classpathentry kind="src" path="src"/>
-  <classpathentry kind="src" path="test"/>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="lib" path="lib/clojure-1.2.1.jar"/>
-  <classpathentry kind="lib" path="lib/clojure-contrib-1.2.0.jar"/>
-  <classpathentry kind="lib" path="lib/clout-0.4.1.jar"/>
-  <classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
-  <classpathentry kind="lib" path="lib/commons-fileupload-1.2.1.jar"/>
-  <classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
-  <classpathentry kind="lib" path="lib/compojure-0.6.2.jar"/>
-  <classpathentry kind="lib" path="lib/dev"/>
-  <classpathentry kind="lib" path="lib/ring-core-0.3.7.jar"/>
-  <classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
-  <classpathentry kind="output" path="classes"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/clojure-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/clojure-contrib-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/clout-0.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/compojure-0.6.2.jar"/>
+	<classpathentry kind="lib" path="lib/dev"/>
+	<classpathentry kind="lib" path="lib/ring-core-0.3.7.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/dev/appengine-magic-0.4.1.jar"/>
+	<classpathentry kind="output" path="classes"/>
 </classpath>

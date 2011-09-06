@@ -1,16 +1,15 @@
 (ns joke-book.cqrs.command-bus
   (:require [joke-book.cqrs.repository :as repository]))
 
-(def command-bus (atom {}))
+(def handlers(atom {}))
 
-(defn register-handler-with-bus [command-name handler]
-  (swap! command-bus conj {command-name handler}))
+(defn reset-bus! []
+  (reset! handlers {}))
 
-(defmacro command-handler [command & fnhandler]
-  `(do
-     (defn ~command ~@fnhandler)
-     (register-handler-with-bus (keyword '~command) ~command)))
+(defn register [name handler]
+  (swap! handlers conj {name handler}))
 
-(defn execute-command [command args]
+
+(defn execute [name args]
   (repository/unit-of-work
-    ((@command-bus command) args)))
+    ((@handlers name) args)))

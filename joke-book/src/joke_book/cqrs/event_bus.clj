@@ -2,7 +2,7 @@
 
 (def handlers(atom {}))
 
-(defn reset-bus! []
+(defn clear-handlers! []
   (reset! handlers {}))
 
 (defn register [name handler]

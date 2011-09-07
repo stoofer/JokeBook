@@ -15,18 +15,19 @@
        (event-store/commit)
        (publish-results))))
 
+
+;==============ENTITY???===========================================
 (def domain-event-handlers (atom {}))
+
+(defn clear-handlers! [] 
+  (reset! domain-event-handlers {}))
 
 (defn register-domain-event-handler [event-name handler]
   (swap! domain-event-handlers conj {event-name handler}))
 
-(defmacro on-event [event & fnhandler]
-`(do
-     (defn ~event ~@fnhandler)
-     (register-domain-event-handler (keyword '~event) ~event)))
-  
 (defn update-domain [e a d]
   ((@domain-event-handlers e) e a d))
+
 
 (defn apply-event! [event aggregate event-data]
   (swap! *unit-of-work* conj {:event event, :aggregate aggregate, :event-data event-data})

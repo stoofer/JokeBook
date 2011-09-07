@@ -1,15 +1,14 @@
 (ns joke-book.cqrs.command-bus
-  (:require [joke-book.cqrs.repository :as repository]))
+  (:use [joke-book.cqrs.repository :only [unit-of-work]]))
 
 (def handlers(atom {}))
 
-(defn reset-bus! []
+(defn clear-handlers! []
   (reset! handlers {}))
 
 (defn register [name handler]
   (swap! handlers conj {name handler}))
 
-
 (defn execute [name args]
-  (repository/unit-of-work
+  (unit-of-work
     ((@handlers name) args)))

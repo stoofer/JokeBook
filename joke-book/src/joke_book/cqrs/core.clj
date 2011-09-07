@@ -39,3 +39,6 @@
   `(do
      (defn ~event ~@fnhandler)
      (repository/register-domain-event-handler (keyword '~event) ~event)))
+
+(defn execute-command [command args]
+  (command-bus/execute command args))

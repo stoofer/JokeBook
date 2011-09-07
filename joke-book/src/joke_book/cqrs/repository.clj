@@ -12,7 +12,7 @@
   `(binding [*unit-of-work* (atom {})]
      (do 
        ~@body
-       (event-store/commit)
+       (event-store/commit @*unit-of-work*)
        (publish-results))))
 
 

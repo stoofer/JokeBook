@@ -10,5 +10,12 @@
   (swap! handlers conj {name handler}))
 
 (defn execute [name args]
+  (println (str "Bus: Execute command " name))
   (unit-of-work
     ((@handlers name) args)))
+
+(defn apply-event [event aggregate event-data]
+  (printf (str "Applying event" + event)))
+
+
+  

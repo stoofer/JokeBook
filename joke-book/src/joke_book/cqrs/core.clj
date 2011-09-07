@@ -41,4 +41,9 @@
      (repository/register-domain-event-handler (keyword '~event) ~event)))
 
 (defn execute-command [command args]
+  (println (str "Execute command " command))
   (command-bus/execute command args))
+
+(defn apply-event! [event agg args]
+  (println (str "Apply event " event))
+  (repository/apply-event! event agg args))

@@ -1,6 +1,7 @@
 (ns joke-book.test.cqrs.core
   (:use [joke-book.cqrs.core])
-  (:use [clojure.test]))
+  (:use [clojure.test])
+  (:require [joke-book.test.cqrs.foo :as foo]))
 
 (deftest can-register-command-handler
   (reset-all!)
@@ -38,13 +39,15 @@
     (execute-command :cmd cmd-args)
     (is (= cmd-args @called))))
 
-(comment
-  (deftest command-can-create-an-aggregate
+(deftest creating-aggregate-fires-event-to-subscribers
   (reset-all!)
-  (let [called (atom {})
-        cmd-args {:some :command-data}]
-    (command-handler cmd [a] (reset! called a))
-    (execute-command :cmd cmd-args)
-    (is (= cmd-args @called))))
-)
+  (foo/register)
+  (command-handler create-foo [args] 
+    (foo/create args))
+  (let [called (atom {})]
+    (event-handler foo-created [a] (reset! called a))
+    (execute-command :create-foo {})
+    (is (= :foo-created (keys @called)))))
+
+
 ;(deftest command-can-load-an-aggregate
